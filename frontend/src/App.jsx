@@ -1,7 +1,7 @@
-import { ArrowRight, BadgeCheck, Search, Store } from "lucide-react";
 import { useState } from "react";
 import AuthModal from "./components/AuthModal";
 import Header from "./components/Header";
+import Icon from "./components/Icon";
 import ProductCard from "./components/ProductCard";
 import { categories, products } from "./data/products";
 
@@ -28,7 +28,7 @@ function App() {
               <a className="button primary" href="#discover">Explore products</a>
               <button className="button outline" onClick={() => openAuth("signup")}>Start selling</button>
             </div>
-            <div className="hero-trust"><BadgeCheck size={19} /><span>Sellers are reviewed before they can publish products.</span></div>
+            <div className="hero-trust"><Icon name="check" /><span>Sellers are reviewed before they can publish products.</span></div>
           </div>
           <div className="hero-media" role="img" aria-label="Curated lamp, ceramic vessel and headphones" />
         </section>
@@ -42,12 +42,12 @@ function App() {
                 </button>
               ))}
             </div>
-            <button className="search-button" aria-label="Search products"><Search size={19} /></button>
+            <button className="search-button" aria-label="Search products"><Icon name="search" /></button>
           </div>
 
           <div className="section-heading">
             <div><h2>Fresh finds</h2><p>Small-batch pieces from sellers worth knowing.</p></div>
-            <a href="#discover">View all <ArrowRight size={16} /></a>
+            <a href="#discover">View all <Icon name="arrow" /></a>
           </div>
           <div className="product-grid">
             {products.map((product) => <ProductCard key={product.id} product={product} />)}
@@ -55,9 +55,9 @@ function App() {
         </section>
 
         <section className="seller-section" id="sellers">
-          <div className="seller-icon"><Store size={28} /></div>
+          <div className="seller-icon"><Icon name="store" /></div>
           <div className="seller-copy"><h2>Bring your shop to Mercato</h2><p>Apply with your brand and business details. An admin reviews every seller before products go live.</p></div>
-          <button className="button primary" onClick={() => openAuth("signup")}>Apply to sell <ArrowRight size={17} /></button>
+          <button className="button primary" onClick={() => openAuth("signup")}>Apply to sell <Icon name="arrow" /></button>
         </section>
 
         <section className="steps-section" id="how-it-works">

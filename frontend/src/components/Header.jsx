@@ -1,4 +1,4 @@
-import { Menu, ShoppingBag, X } from "lucide-react";
+import Icon from "./Icon";
 
 function Header({ menuOpen, onToggleMenu, onOpenAuth }) {
   return (
@@ -12,9 +12,9 @@ function Header({ menuOpen, onToggleMenu, onOpenAuth }) {
       <div className="header-actions">
         <button className="text-button" onClick={() => onOpenAuth("login")}>Log in</button>
         <button className="button primary small" onClick={() => onOpenAuth("signup")}>Sign up</button>
-        <button className="bag-button" aria-label="Shopping bag"><ShoppingBag size={19} /><span>0</span></button>
+        <button className="bag-button" aria-label="Shopping bag"><Icon name="bag" /><span>0</span></button>
         <button className="menu-button" onClick={onToggleMenu} aria-label="Toggle navigation">
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          <Icon name={menuOpen ? "close" : "menu"} />
         </button>
       </div>
     </header>

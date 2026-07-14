@@ -1,5 +1,5 @@
-import { Heart } from "lucide-react";
 import { useState } from "react";
+import Icon from "./Icon";
 
 function ProductCard({ product }) {
   const [saved, setSaved] = useState(false);
@@ -13,7 +13,7 @@ function ProductCard({ product }) {
           onClick={() => setSaved((current) => !current)}
           aria-label={saved ? `Remove ${product.name} from saved items` : `Save ${product.name}`}
         >
-          <Heart size={18} fill={saved ? "currentColor" : "none"} />
+          <Icon name="heart" filled={saved} />
         </button>
       </div>
       <div className="product-details">

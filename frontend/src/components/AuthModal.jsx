@@ -1,10 +1,10 @@
-import { ShieldCheck, Store, UserRound, X } from "lucide-react";
 import { useState } from "react";
+import Icon from "./Icon";
 
 const roles = [
-  { value: "USER", label: "User", icon: UserRound },
-  { value: "SELLER", label: "Seller", icon: Store },
-  { value: "ADMIN", label: "Admin", icon: ShieldCheck },
+  { value: "USER", label: "User", icon: "user" },
+  { value: "SELLER", label: "Seller", icon: "store" },
+  { value: "ADMIN", label: "Admin", icon: "shield" },
 ];
 
 const initialForm = { name: "", email: "", password: "", confirmPassword: "" };
@@ -59,7 +59,7 @@ function AuthModal({ initialMode, onClose }) {
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
       <div className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title" onMouseDown={(event) => event.stopPropagation()}>
-        <button className="close-button" onClick={onClose} aria-label="Close authentication"><X size={20} /></button>
+        <button className="close-button" onClick={onClose} aria-label="Close authentication"><Icon name="close" /></button>
         <h2 id="auth-title">{mode === "login" ? "Welcome back" : "Create your account"}</h2>
         <p className="modal-intro">
           {mode === "login" ? "Choose how you use Mercato, then continue." : "Every new account starts as a marketplace user."}
@@ -67,14 +67,14 @@ function AuthModal({ initialMode, onClose }) {
 
         {mode === "login" ? (
           <div className="role-grid" aria-label="Choose account role">
-            {roles.map(({ value, label, icon: Icon }) => (
+            {roles.map(({ value, label, icon }) => (
               <button key={value} className={role === value ? "role-option active" : "role-option"} onClick={() => setRole(value)}>
-                <Icon size={21} /><span>{label}</span>
+                <Icon name={icon} /><span>{label}</span>
               </button>
             ))}
           </div>
         ) : (
-          <div className="seller-note"><Store size={19} /><p>Want to sell? Sign up as a user first, then submit a seller application for admin approval.</p></div>
+          <div className="seller-note"><Icon name="store" /><p>Want to sell? Sign up as a user first, then submit a seller application for admin approval.</p></div>
         )}
 
         <form onSubmit={submit}>
