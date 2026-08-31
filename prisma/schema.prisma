@@ -24,6 +24,8 @@ model User {
   email     String   @unique
   password  String
   role      Role     @default(USER)
+
+  
   seller    Seller?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -38,6 +40,8 @@ model Seller {
   payoutDetails   String?
   status          SellerStatus  @default(PENDING_APPROVAL)
   userId          String        @unique
+
+
   user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   products        Product[]
   createdAt       DateTime      @default(now())
@@ -53,6 +57,8 @@ model Product {
   price       Int
   stock       Int      @default(0)
   sellerId    String
+
+  
   seller      Seller   @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
